@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `sauce_chef`.`employee` (
   `emp_type` VARCHAR(45) NULL DEFAULT NULL,
   `RESTO_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_EMPLOYEE_RESTO1_idx` (`RESTO_id` ASC) VISIBLE,
+  INDEX `fk_EMPLOYEE_RESTO1_idx` (`RESTO_id` ASC),
   CONSTRAINT `fk_EMPLOYEE_RESTO1`
     FOREIGN KEY (`RESTO_id`)
     REFERENCES `sauce_chef`.`resto` (`id`)
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `sauce_chef`.`order_detail` (
   `od_remarks` VARCHAR(1000) NULL DEFAULT NULL,
   `food_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_order_detail_food1_idx` (`food_id` ASC) VISIBLE,
+  INDEX `fk_order_detail_food1_idx` (`food_id` ASC),
   CONSTRAINT `fk_order_detail_food1`
     FOREIGN KEY (`food_id`)
     REFERENCES `sauce_chef`.`food` (`id`)
@@ -112,8 +112,8 @@ CREATE TABLE IF NOT EXISTS `sauce_chef`.`order_header` (
   `CUSTOMER_id` INT NOT NULL,
   `order_detail_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_ORDER_CUSTOMER1_idx` (`CUSTOMER_id` ASC) VISIBLE,
-  INDEX `fk_order_header_order_detail1_idx` (`order_detail_id` ASC) VISIBLE,
+  INDEX `fk_ORDER_CUSTOMER1_idx` (`CUSTOMER_id` ASC),
+  INDEX `fk_order_header_order_detail1_idx` (`order_detail_id` ASC),
   CONSTRAINT `fk_ORDER_CUSTOMER1`
     FOREIGN KEY (`CUSTOMER_id`)
     REFERENCES `sauce_chef`.`customer` (`id`)
@@ -140,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `sauce_chef`.`payment` (
   `payment_reference_num` INT NULL DEFAULT NULL,
   `order_header_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_payment_order_header1_idx` (`order_header_id` ASC) VISIBLE,
+  INDEX `fk_payment_order_header1_idx` (`order_header_id` ASC),
   CONSTRAINT `fk_payment_order_header1`
     FOREIGN KEY (`order_header_id`)
     REFERENCES `sauce_chef`.`order_header` (`id`)
@@ -172,8 +172,8 @@ CREATE TABLE IF NOT EXISTS `sauce_chef`.`purchase_order` (
   `po_delivery_date` DATE NULL,
   `po_order_stat` VARCHAR(100) NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_supplier_has_resto_resto1_idx` (`resto_id` ASC) VISIBLE,
-  INDEX `fk_supplier_has_resto_supplier1_idx` (`supplier_id` ASC) VISIBLE,
+  INDEX `fk_supplier_has_resto_resto1_idx` (`resto_id` ASC),
+  INDEX `fk_supplier_has_resto_supplier1_idx` (`supplier_id` ASC),
   CONSTRAINT `fk_supplier_has_resto_supplier1`
     FOREIGN KEY (`supplier_id`)
     REFERENCES `sauce_chef`.`supplier` (`id`)
@@ -205,9 +205,9 @@ CREATE TABLE IF NOT EXISTS `sauce_chef`.`recipe` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `food_id` INT NOT NULL,
   `ingredients_id` INT NOT NULL,
-  INDEX `fk_ingredients_has_food_food1_idx` (`food_id` ASC) VISIBLE,
+  INDEX `fk_ingredients_has_food_food1_idx` (`food_id` ASC),
   PRIMARY KEY (`id`),
-  INDEX `fk_recipe_ingredients1_idx` (`ingredients_id` ASC) VISIBLE,
+  INDEX `fk_recipe_ingredients1_idx` (`ingredients_id` ASC),
   CONSTRAINT `fk_ingredients_has_food_food1`
     FOREIGN KEY (`food_id`)
     REFERENCES `sauce_chef`.`food` (`id`)
