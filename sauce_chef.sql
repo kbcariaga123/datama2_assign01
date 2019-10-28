@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `sauce_chef`.`customer` (
   `cust_phone` INT(11) NULL DEFAULT NULL,
   `RESTO_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_CUSTOMER_RESTO1_idx` (`RESTO_id` ASC) VISIBLE,
+  INDEX `fk_CUSTOMER_RESTO1_idx` (`RESTO_id` ASC),
   CONSTRAINT `fk_CUSTOMER_RESTO1`
     FOREIGN KEY (`RESTO_id`)
     REFERENCES `sauce_chef`.`resto` (`id`)
