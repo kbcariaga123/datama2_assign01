@@ -1,0 +1,20 @@
+SELECT
+supplier.id,
+supplier_name,
+purchase_order.id,
+purchase_order.po_order_date
+resto.id
+FROM supplier
+JOIN purchase_order.id = purchase_order.id 
+JOIN resto ON resto.id = purchase_order.id 
+
+--------------
+
+
+SELECT
+supplier.id,
+supplier_name,
+resto.id
+FROM supplier
+JOIN purchase_order ON supplier.id = purchase_order.id 
+JOIN resto ON resto.id = purchase_order.id 
